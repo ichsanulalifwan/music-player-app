@@ -2,6 +2,8 @@
 agp = "8.9.0"
 kotlin = "2.0.21"
 ksp = "2.0.21-1.0.26"
+firebaseAppDistribution = "5.1.1"
+
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -65,4 +67,5 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
+firebase-app-distribution = { id = "com.google.firebase.appdistribution", version.ref = "firebaseAppDistribution" }
 

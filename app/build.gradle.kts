@@ -1,8 +1,21 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.firebase.app.distribution)
+}
+
+val localProperties = Properties().apply {
+    val file = File(rootProject.rootDir, "local.properties")
+    if (file.exists()){
+        load(FileInputStream(file))
+    } else {
+        error("please add local.properties and key-value on root project")
+    }
 }
 
 android {
@@ -38,6 +51,12 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    firebaseAppDistribution {
+        appId = localProperties.getProperty("app.id")
+        serviceCredentialsFile = firebaseCredentialsFile()
+        releaseNotesFile = firebaseDistAppReleaseNote("[App Distribution] ")
+        groups = "tester"
+    }
 }
 
 dependencies {
@@ -55,4 +74,12 @@ dependencies {
     // DI
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
+}
+
+fun firebaseCredentialsFile(): String{
+    return "app/firebase-service-account.json"
+}
+
+fun firebaseDistAppReleaseNote(flavor: String): String{
+    return localProperties.getProperty("release.note") ?: (flavor + "") // custom release note
 }
