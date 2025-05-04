@@ -1,0 +1,57 @@
+name: Deploy My Music Player App to Firebase
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseNotes:
+        description: Release Notes (optional)
+        required: false
+
+jobs:
+  build:
+    name: Build & Distribute APK
+    runs-on: ubuntu-latest
+
+    env:
+      GRADLE_OPTS: -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx4g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2.0.9
+
+      - name: Grant permission to gradlew
+        run: chmod +x ./gradlew
+
+      - name: Create local.properties
+        run: echo '${{ secrets.LOCAL_PROPERTIES }}' > local.properties
+
+      - name: Set Release Note
+        run: |
+          if [[ -z "${{ github.event.inputs.releaseNotes }}" ]]; then
+            COMMIT_MSG=$(git log -1 --pretty=%B)
+            echo "release.note=$COMMIT_MSG" >> local.properties
+          else
+            echo "release.note=${{ github.event.inputs.releaseNotes }}" >> local.properties
+          fi
+
+      - name: Build APK
+        run: ./gradlew assembleRelease appDistributionUploadRelease
+
+      - name: Notify Google Chat
+        uses: amary21/google-chat-notification@v3
+        with:
+          name: "[APK-MusicPlayer][Release] ${{ github.event.inputs.releaseNotes || 'Auto build from main' }}"
+          url: ${{ secrets.GOOGLE_CHAT_WEBHOOK_FAD }}
+          status: ${{ job.status }}
+          open_check_url: ${{ secrets.FAD_PROD_URL }}
+        if: always()
