@@ -39,8 +39,9 @@ jobs:
         run: |
           echo "commit_note=${{ github.event.inputs.releaseNotes }}" >> $GITHUB_ENV
 
-      - name: Create local.properties
-        run: echo '${{ secrets.LOCAL_PROPERTIES }}' > local.properties
+      - name: Access Secret Key
+        run: |
+          echo '${{ secrets.LOCAL_PROPERTIES }}' >> ./local.properties
 
       - name: Build APK
         run: ./gradlew assembleRelease appDistributionUploadRelease
