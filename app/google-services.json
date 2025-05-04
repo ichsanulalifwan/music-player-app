@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815405700148",
+    "project_id": "music-player-app-e7dab",
+    "storage_bucket": "music-player-app-e7dab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815405700148:android:3bda5bde5c5e06f89de661",
+        "android_client_info": {
+          "package_name": "com.example.musicplayerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuchSODmk1zcFP0Obe7yBLmH1PK8suIwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
