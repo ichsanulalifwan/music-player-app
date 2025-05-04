@@ -7,6 +7,8 @@ on:
         description: Release Notes (optional)
         required: false
 
+run-name: ${{ github.event.inputs.releaseNotes }}
+
 jobs:
   build:
     name: Build & Distribute APK
@@ -32,17 +34,13 @@ jobs:
       - name: Grant permission to gradlew
         run: chmod +x ./gradlew
 
+      - name: Set Release Note
+        if: github.event.inputs.releaseNotes != ''
+        run: |
+          echo "commit_note=${{ github.event.inputs.releaseNotes }}" >> $GITHUB_ENV
+
       - name: Create local.properties
         run: echo '${{ secrets.LOCAL_PROPERTIES }}' > local.properties
-
-      - name: Set Release Note
-        run: |
-          if [[ -z "${{ github.event.inputs.releaseNotes }}" ]]; then
-            COMMIT_MSG=$(git log -1 --pretty=%B)
-            echo "release.note=$COMMIT_MSG" >> local.properties
-          else
-            echo "release.note=${{ github.event.inputs.releaseNotes }}" >> local.properties
-          fi
 
       - name: Build APK
         run: ./gradlew assembleRelease appDistributionUploadRelease

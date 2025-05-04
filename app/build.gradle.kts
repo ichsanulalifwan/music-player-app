@@ -54,7 +54,7 @@ android {
     firebaseAppDistribution {
         appId = localProperties.getProperty("app.id")
         serviceCredentialsFile = firebaseCredentialsFile()
-        releaseNotesFile = firebaseDistAppReleaseNote("[App Distribution] ")
+        releaseNotes = firebaseDistAppReleaseNote("[App Distribution] ")
         groups = "tester"
     }
 }
@@ -77,7 +77,7 @@ dependencies {
 }
 
 fun firebaseCredentialsFile(): String{
-    return "app/firebase-service-account.json"
+    return "app/serviceAccountKey.json"
 }
 
 fun firebaseDistAppReleaseNote(flavor: String): String{
