@@ -2,9 +2,61 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.musicplayer.MusicPlayerListActivity">
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputSearch"
+        android:layout_width="@dimen/value_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/value_16dp"
+        android:layout_marginTop="@dimen/value_48dp"
+        android:elevation="@dimen/value_4dp"
+        android:paddingVertical="@dimen/value_2dp"
+        app:boxBackgroundColor="@color/neutral_10"
+        app:boxCornerRadiusBottomEnd="@dimen/value_8dp"
+        app:boxCornerRadiusBottomStart="@dimen/value_8dp"
+        app:boxCornerRadiusTopEnd="@dimen/value_8dp"
+        app:boxCornerRadiusTopStart="@dimen/value_8dp"
+        app:boxStrokeColor="@color/neutral_10"
+        app:boxStrokeWidth="@dimen/value_1dp"
+        app:endIconDrawable="@drawable/ic_delete_search"
+        app:endIconMode="clear_text"
+        app:endIconScaleType="center"
+        app:endIconTint="@color/blue"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@style/ErrorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderText="@string/text_placeholder_search_text"
+        app:placeholderTextColor="@color/blue"
+        app:startIconDrawable="@drawable/ic_search"
+        app:startIconScaleType="center"
+        app:startIconTint="@color/blue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/blue" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMusicList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/value_16dp"
+        android:layout_marginTop="@dimen/value_16dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSearch"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_music_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,4 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="neutral_10">#FFFFFF</color>
+    <color name="neutral_20">#F5F5F5</color>
+    <color name="neutral_30">#EDEDED</color>
+    <color name="neutral_40">#E0E0E0</color>
+    <color name="neutral_50">#C2C2C2</color>
+    <color name="neutral_60">#9E9E9E</color>
+    <color name="neutral_70">#757575</color>
+    <color name="neutral_80">#616161</color>
+    <color name="neutral_90">#404040</color>
+    <color name="neutral_100">#0A0A0A</color>
+
+    <color name="blue">#006EFF</color>
+    <color name="primary_surface">#E0EDFF</color>
+
+    <color name="danger_main">#CB3A31</color>
 </resources>
