@@ -58,7 +58,7 @@ object NetworkModule {
         client: OkHttpClient,
         moshi: Moshi,
     ): Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.deezer.com/")
+        .baseUrl("https://api.deezer.com/") // For maintainability and security put in local.properties
         .client(client)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
