@@ -56,6 +56,9 @@ dependencies {
     // ViewModel
     implementation (libs.lifecycle.viewmodel.ktx)
 
+    // Coroutines
+    implementation(libs.coroutines.core)
+
     // Glide
     implementation (libs.glide)
 

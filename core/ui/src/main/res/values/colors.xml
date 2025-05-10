@@ -15,6 +15,7 @@
     <color name="neutral_100">#0A0A0A</color>
 
     <color name="blue">#006EFF</color>
+    <color name="primary_pressed">#003884</color>
     <color name="primary_surface">#E0EDFF</color>
 
     <color name="danger_main">#CB3A31</color>

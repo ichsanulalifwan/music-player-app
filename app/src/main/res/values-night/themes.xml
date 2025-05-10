@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MusicPlayerApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/primary_pressed</item>
+        <item name="colorOnPrimary">@color/neutral_10</item>
     </style>
 </resources>

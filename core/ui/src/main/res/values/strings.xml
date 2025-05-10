@@ -1,4 +1,4 @@
 <resources>
-    <string name="text_placeholder_search_text">Search Artist</string>
+    <string name="text_placeholder_search_text">Artist Search</string>
     <string name="text_content_description">Deskripsi Image</string>
 </resources>
