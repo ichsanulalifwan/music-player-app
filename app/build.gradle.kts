@@ -1,5 +1,5 @@
-import java.util.Properties
 import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -60,7 +60,9 @@ android {
 }
 
 dependencies {
-//    implementation(project.core.ui)
+    implementation(projects.core.ui)
+    implementation(projects.core.navigation)
+    implementation(projects.feature.player)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.dagger.hilt) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.firebase.app.distribution) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
 }
