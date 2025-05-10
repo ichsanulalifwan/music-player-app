@@ -42,6 +42,8 @@ dependencies {
     // Coroutines
     implementation(libs.coroutines.core)
 
+    implementation (libs.lifecycle.runtime.ktx)
+
     // DI
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
