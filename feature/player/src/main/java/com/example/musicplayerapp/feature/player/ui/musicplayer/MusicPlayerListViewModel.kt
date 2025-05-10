@@ -3,7 +3,7 @@ package com.example.musicplayerapp.feature.player.ui.musicplayer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.musicplayerapp.core.data.ApiResponse
-import com.example.musicplayerapp.data.player.api.model.TrackList
+import com.example.musicplayerapp.data.player.api.model.Song
 import com.example.musicplayerapp.data.player.api.repository.MusicPlayerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -47,7 +47,7 @@ internal class MusicPlayerListViewModel @Inject constructor(
     }
 
     private fun handleMusicListResponse(
-        response: ApiResponse<List<TrackList>>,
+        response: ApiResponse<List<Song>>,
     ) {
         when (response) {
             is ApiResponse.Loading -> {

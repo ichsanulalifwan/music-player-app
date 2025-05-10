@@ -10,5 +10,5 @@ interface MusicPlayerApi {
     @GET("2.0/playlist/{playlist_id}")
     suspend fun getMusicList(
         @Path("playlist_id") playlistId: String = "908622995",
-    ): Response<List<TrackListResponse>>
+    ): Response<TrackListResponse>
 }
