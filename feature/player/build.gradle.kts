@@ -38,14 +38,26 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.coroutines)
+    implementation(projects.core.data)
+    implementation(projects.core.navigation)
+    implementation(projects.core.ui)
+    implementation(projects.data.player)
 
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
 
     // DI
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
+
+    // ViewModel
+    implementation (libs.lifecycle.viewmodel.ktx)
+
+    // Glide
+    implementation (libs.glide)
 
     // Unit Test
     testImplementation(libs.junit)
