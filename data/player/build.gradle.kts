@@ -38,13 +38,18 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+    implementation(projects.core.data)
+    implementation(projects.core.coroutines)
+    implementation(projects.core.network)
 
     // DI
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
+
+    // Remote
+    implementation(libs.retrofit)
+    implementation(libs.moshi)
+    ksp(libs.moshi.codegen)
 
     // Unit Test
     testImplementation(libs.junit)
