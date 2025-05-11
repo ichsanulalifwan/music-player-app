@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnLoadMusic.setOnClickListener {
-            val intent = playerNavigation.getMusicPlayerListActivity(this)
-            startActivity(intent)
-        }
+        val intent = playerNavigation.getMusicPlayerListActivity(this)
+        startActivity(intent)
     }
 }
