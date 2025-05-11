@@ -27,6 +27,10 @@ internal class MusicPlayerListViewModel @Inject constructor(
                 loadingData()
                 getMusicList()
             }
+
+            is MusicPlayerEvent.UpdatePlayerState -> {
+                updatePlayerStateFromBinder(binder = event.binder)
+            }
         }
     }
 
@@ -72,7 +76,7 @@ internal class MusicPlayerListViewModel @Inject constructor(
         }
     }
 
-    fun updatePlayerStateFromBinder(binder: MusicPlayerService.MusicBinder) {
+    private fun updatePlayerStateFromBinder(binder: MusicPlayerService.MusicBinder) {
         viewModelScope.launch {
             binder.getCurrentTrack().collect { song ->
                 _state.update { it.copy(currentTrack = song) }

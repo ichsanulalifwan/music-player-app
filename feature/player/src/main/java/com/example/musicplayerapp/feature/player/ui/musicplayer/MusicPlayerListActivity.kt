@@ -214,7 +214,7 @@ class MusicPlayerListActivity : AppCompatActivity() {
     }
 
     private fun observePlayerState(binder: MusicPlayerService.MusicBinder) {
-        viewModel.updatePlayerStateFromBinder(binder)
+        viewModel.onEvent(event = MusicPlayerEvent.UpdatePlayerState(binder = binder))
     }
 
     override fun onDestroy() {
