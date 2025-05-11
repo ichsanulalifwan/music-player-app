@@ -54,9 +54,95 @@
         android:layout_marginTop="@dimen/value_16dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/playerBar"
         app:layout_constraintTop_toBottomOf="@+id/inputSearch"
         tools:itemCount="5"
         tools:listitem="@layout/item_music_list" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/playerBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_70dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/musicTitle"
+                android:layout_width="@dimen/value_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/value_24dp"
+                android:layout_marginEnd="@dimen/value_16dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/value_16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnPlayerRewind"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Song" />
+
+            <ImageButton
+                android:id="@+id/btnPlayerRewind"
+                android:layout_width="@dimen/value_25dp"
+                android:layout_height="@dimen/value_25dp"
+                android:layout_marginStart="@dimen/value_40dp"
+                android:layout_marginEnd="@dimen/value_20dp"
+                android:background="@drawable/ic_prev"
+                android:contentDescription="@string/text_content_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnPlayerPlay"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/musicTitle"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnPlayerPlay"
+                android:layout_width="@dimen/value_35dp"
+                android:layout_height="@dimen/value_35dp"
+                android:layout_marginEnd="@dimen/value_20dp"
+                android:background="@drawable/ic_play"
+                android:contentDescription="@string/text_content_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnPlayerPause"
+                app:layout_constraintStart_toEndOf="@+id/btnPlayerRewind"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnPlayerPause"
+                android:layout_width="@dimen/value_35dp"
+                android:layout_height="@dimen/value_35dp"
+                android:layout_marginEnd="@dimen/value_20dp"
+                android:background="@drawable/ic_pause"
+                android:contentDescription="@string/text_content_description"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnPlayerNext"
+                app:layout_constraintStart_toEndOf="@+id/btnPlayerPlay"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnPlayerNext"
+                android:layout_width="@dimen/value_25dp"
+                android:layout_height="@dimen/value_25dp"
+                android:layout_marginEnd="@dimen/value_30dp"
+                android:background="@drawable/ic_next"
+                android:contentDescription="@string/text_content_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnPlayerPause"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

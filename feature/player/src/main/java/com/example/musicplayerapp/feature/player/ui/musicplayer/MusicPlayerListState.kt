@@ -7,6 +7,8 @@ internal data class MusicPlayerListState(
     val musicList: List<Song> = emptyList(),
     val isError: Boolean = false,
     val errorMessage: String = "",
-    val isPlayingMusic: Boolean = false,
-    val playedMusic: Int = 0,
+    val isPlaying: Boolean = false,
+    val maxDuration: Float = 0f,
+    val currentDuration: Float = 0f,
+    val currentTrack: Song = Song(),
 )

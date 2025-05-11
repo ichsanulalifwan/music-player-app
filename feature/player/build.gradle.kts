@@ -42,8 +42,11 @@ dependencies {
     implementation(projects.core.data)
     implementation(projects.core.navigation)
     implementation(projects.core.ui)
+    implementation(projects.core.media)
     implementation(projects.data.player)
 
+//    implementation(libs.androidx.core.ktx)
+    implementation( libs.androidx.media)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)

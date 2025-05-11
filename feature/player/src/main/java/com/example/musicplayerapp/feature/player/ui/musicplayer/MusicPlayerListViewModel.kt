@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.musicplayerapp.core.data.ApiResponse
 import com.example.musicplayerapp.data.player.api.model.Song
 import com.example.musicplayerapp.data.player.api.repository.MusicPlayerRepository
+import com.example.musicplayerapp.feature.player.service.MusicPlayerService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,12 +26,6 @@ internal class MusicPlayerListViewModel @Inject constructor(
             is MusicPlayerEvent.GetMusicList -> {
                 loadingData()
                 getMusicList()
-            }
-
-            is MusicPlayerEvent.SearchMusic -> {
-                loadingData()
-                clearMusics()
-                searchMusicList(artistName = event.query)
             }
         }
     }
@@ -77,15 +72,29 @@ internal class MusicPlayerListViewModel @Inject constructor(
         }
     }
 
-    private fun searchMusicList(artistName: String) = viewModelScope.launch {
+    fun updatePlayerStateFromBinder(binder: MusicPlayerService.MusicBinder) {
+        viewModelScope.launch {
+            binder.getCurrentTrack().collect { song ->
+                _state.update { it.copy(currentTrack = song) }
+            }
+        }
 
-    }
+        viewModelScope.launch {
+            binder.isPlaying().collect { playing ->
+                _state.update { it.copy(isPlaying = playing) }
+            }
+        }
 
-    private fun clearMusics() {
-        _state.update {
-            it.copy(
-                musicList = emptyList(),
-            )
+        viewModelScope.launch {
+            binder.maxDuration().collect { max ->
+                _state.update { it.copy(maxDuration = max) }
+            }
+        }
+
+        viewModelScope.launch {
+            binder.currentDuration().collect { current ->
+                _state.update { it.copy(currentDuration = current) }
+            }
         }
     }
 }
